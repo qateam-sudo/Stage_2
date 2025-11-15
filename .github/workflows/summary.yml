@@ -5,7 +5,7 @@ on:
   repository_dispatch:  # allow self re-trigger
     types: [rerun_filter_flow]
   schedule:             # scheduled runs
-    - cron: '*/15 * * * *'   # every 15 minutes
+    - cron: '*/25 * * * *'   # every 15 minutes
 
 permissions:
   contents: write       # ✅ required for API to trigger new workflow runs
