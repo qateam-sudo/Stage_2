@@ -87,12 +87,7 @@ public class XYSRP_Flow {
 	        }
 
 	        try {
-	            // Replace airport mappings
-	            if ("CAI".equals(data.To)) data.To = "EG1";
-	            else if ("CAI".equals(data.From)) data.From = "EG1";
 
-	            if ("DXB".equals(data.To)) data.To = "AE1";
-	            else if ("DXB".equals(data.From)) data.From = "AE1";
 
 	            // Convert date from "dd MMM yyyy" → "yyyy-MM-dd"
 	            Date depDate = new SimpleDateFormat("dd MMM yyyy").parse(data.DepartureDate);
@@ -182,12 +177,7 @@ public class XYSRP_Flow {
 	        }
 
 	        try {
-	            // Replace airport mappings
-	            if ("CAI".equals(data.To)) data.To = "EG1";
-	            else if ("CAI".equals(data.From)) data.From = "EG1";
 
-	            if ("DXB".equals(data.To)) data.To = "AE1";
-	            else if ("DXB".equals(data.From)) data.From = "AE1";
 
 	            // Convert date from "dd MMM yyyy" → "yyyy-MM-dd"
 	            Date depDate = new SimpleDateFormat("dd MMM yyyy").parse(data.DepartureDate);
@@ -276,12 +266,7 @@ public class XYSRP_Flow {
 	        }
 
 	        try {
-	            // Replace airport mappings
-	            if ("CAI".equals(data.To)) data.To = "EG1";
-	            else if ("CAI".equals(data.From)) data.From = "EG1";
 
-	            if ("DXB".equals(data.To)) data.To = "AE1";
-	            else if ("DXB".equals(data.From)) data.From = "AE1";
 
 	            // Convert date from "dd MMM yyyy" → "yyyy-MM-dd"
 	            Date depDate = new SimpleDateFormat("dd MMM yyyy").parse(data.DepartureDate);
