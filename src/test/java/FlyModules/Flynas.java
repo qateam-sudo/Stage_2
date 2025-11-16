@@ -526,70 +526,51 @@ public static void XY_FlightDetailsSending_Economy(WebDriver driver,Database Pnr
 				currentFlightFlyPlus.ChildTaxes=currentFlightFly.ChildTaxes="";
 				//currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="60";
 				
-				if (From.equals("AMM")) {
-				    if (To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="413";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("CAI")) {
-				    if (To.equals("DMM") || To.equals("JED") || To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="320";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("DEL")) {
-				    if (To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="161";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("DMM")) {
-				    if (To.equals("CAI") || To.equals("DXB")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="140";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("DOH")) {
-				    if (To.equals("JED") || To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="130";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("DXB")) {
-				    if (To.equals("DMM") || To.equals("JED") || To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="140";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("JED")) {
-				    if (To.equals("CAI") || To.equals("DOH") || To.equals("AUH") || To.equals("DXB")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="140";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("KWI")) {
-				    if (To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="151";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("LKO")) {
-				    if (To.equals("RUH")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="161";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				    }
-				} else if (From.equals("RUH")) {
-				    if (To.equals("AMM") || To.equals("CAI") || To.equals("DEL") || To.equals("DOH") || To.equals("DXB") || To.equals("KWI") || To.equals("LKO") || To.equals("TBS")) {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="140";
-				    } else {
-				        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-				   }  
-				  } 
-				else {
-			        currentFlightFlyPlus.InfantBasePrice=currentFlightFly.InfantBasePrice ="75";
-			   }  
+				String Infantprice = "75";   // default price
+
+
+				// ====================== 403 fares ======================
+				if (
+				    From.equals("AMM") && (To.equals("JED") || To.equals("RUH"))
+				) {
+					Infantprice = "403";
+				}
+
+
+				// ====================== 310 fares ======================
+				else if (
+				       (From.equals("CAI") && (To.equals("DMM") || To.equals("JED") || To.equals("MED") || To.equals("RUH")))
+				    || (From.equals("SPX") && (To.equals("JED") || To.equals("MED") || To.equals("RUH")))
+				) {
+					Infantprice = "310";
+				}
+
+
+				// ====================== 128 fares ======================
+				else if (
+				       (From.equals("DMM") && (To.equals("CAI") || To.equals("DXB")))
+				    || (From.equals("DXB") && (To.equals("JED") || To.equals("RUH")))
+				    || (From.equals("JED") && (To.equals("AMM") || To.equals("AUH") || To.equals("CAI") || To.equals("DXB") || To.equals("SAW") || To.equals("SPX")))
+				    || (From.equals("MED") && (To.equals("CAI") || To.equals("SPX")))
+				    || (From.equals("RUH") && (To.equals("AMM") || To.equals("CAI") || To.equals("DWC") || To.equals("DXB") || To.equals("IST") || To.equals("SAW") || To.equals("SPX")))
+				    || (From.equals("SAW") && (To.equals("JED") || To.equals("RUH")))
+				) {
+					Infantprice = "128";
+				}
+
+
+				// ====================== 120 fares ======================
+				else if (
+				       (From.equals("DOH") && (To.equals("JED") || To.equals("RUH")))
+				    || (From.equals("JED") && To.equals("DOH"))
+				    || (From.equals("RUH") && (To.equals("DAM") || To.equals("DOH") || To.equals("HYD")))
+				) {
+					Infantprice = "120";
+				}
+
+
+				// ====================== final assignment ======================
+				currentFlightFly.InfantBasePrice = currentFlightFlyPlus.InfantBasePrice = Infantprice;
 				
 				currentFlightFlyPlus.InfantTaxes=currentFlightFly.InfantTaxes="";
 				currentFlightFlyPlus.TotalApiFare=currentFlightFly.TotalApiFare="";
