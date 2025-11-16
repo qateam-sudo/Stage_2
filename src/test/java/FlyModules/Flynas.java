@@ -563,7 +563,7 @@ public static void XY_FlightDetailsSending_Economy(WebDriver driver,Database Pnr
 				else if (
 				       (From.equals("DOH") && (To.equals("JED") || To.equals("RUH")))
 				    || (From.equals("JED") && To.equals("DOH"))
-				    || (From.equals("RUH") && (To.equals("DAM") || To.equals("DOH") || To.equals("HYD")))
+				    || (From.equals("RUH") && (To.equals("DAM") || To.equals("DOH") || To.equals("HYD")))|| (From.equals("TBS") || To.equals("TBS")) 
 				) {
 					Infantprice = "120";
 				}
